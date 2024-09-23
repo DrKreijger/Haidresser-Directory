@@ -1,0 +1,338 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.mainDiv
+{
+    z-index: 3;
+}
+.banniere {
+    background-color: black;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.banniere h4 {
+    color: white;
+    margin: 0;
+    margin-right: auto;
+}
+
+.btn-dark {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #000000;
+    --bs-btn-border-color: #000000;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #aa50a7;
+    --bs-btn-hover-border-color: #373b3e;
+    --bs-btn-focus-shadow-rgb: 66,70,73;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #000000;
+    --bs-btn-active-border-color: #000000;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #212529;
+    --bs-btn-disabled-border-color: #212529;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    max-height: 91vh;
+    overflow: auto;
+}
+
+.contentContainer.details-visible {
+    width: 50%;
+}
+
+
+.barreDeRecherche {
+    box-sizing: border-box;
+    width: 90%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 50px;
+    border-radius: 10px;
+
+}
+
+.barreDeRecherche input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #f3f3f3;
+    border: none;
+    border-radius: 5px;
+}
+
+.coiffeurDetails:not(:empty) + .contentContainer .barreDeRecherche {
+    width: calc(30% - 20px);
+}
+
+#coiffeursContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.coiffeursListe {
+    padding: 10px 20px;
+    margin: 0px 50px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.coiffeursListe:hover {
+    background-color: #b051aa;
+    color: white;
+    cursor: pointer;
+}
+
+.coiffeursListe.selected {
+    background-color: #3b0637;
+    color: white;
+}
+
+.nomCoiffeur {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.rueEtNumero,
+.ville-code_postale {
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+.indexCoiffeur {
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+    font-size: 3em;
+    color: #f6f6f6;
+    font-weight: bold;
+}
+
+#resultCount {
+    font-style: italic;
+    font-size: 0.7em;
+    color: #a2a2a2;
+}
+
+.coiffeurDetails {
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: #f3f3f3;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    justify-content: center;
+    z-index: 1;
+}
+
+#detailsNom,
+#detailsNumero,
+#detailsVoie,
+#detailsCodePostal,
+#detailsVille {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+#valeursNom {
+    font-weight: bold;
+}
+
+#valeursNom,
+#valeursNumero,
+#valeursVoie,
+#valeursCodePostal,
+#valeursVille {
+    font-size: 0.9em;
+}
+
+#coiffeur-Details p span {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+#coiffeur-Details p span.valeurs {
+    text-align: left;
+}
+
+.coiffeurDetailsContainer {
+    width: 50%;
+    margin-top: 68px;
+    visibility: hidden;
+    transform: translateX(100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #f3f3f3;
+    padding: 20px;
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s, transform 0.5s ease-in-out;
+    overflow-x: scroll;
+    overflow-y: auto;
+}
+
+.coiffeurDetails.details-visible {
+    transform: translateX(0%);
+    visibility: visible;
+}
+
+#map {
+    display: none;
+    width: 700px;
+    height: 500px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.coiffeursListe.selected .indexCoiffeur {
+    color: #45113f;
+}
+#logoutBtn
+{
+    display: none;
+}
+#addCoiffeurBtn
+{
+    display: flex;
+}
+
+#detailsLat,
+#detailsLong,
+#valeursLat,
+#valeursLong {
+    display: block;
+}
+
+.editDetailsContainer
+{
+    display: none;
+    background-color: white;
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+.editDetails label,
+.addDetails label
+{
+    display: block;
+    text-align: left;
+    margin-bottom: 2px;
+    color: #333;
+    font-size: 12px;
+}
+
+.editDetails input,
+.addDetails input
+{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f3f3f3;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.addCoiffeurContainer
+{
+    display: none;
+    background-color: white;
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+#closeDetailsBtn
+{
+    background-color:#9e3783;
+    border-radius:42px;
+    border:none;
+    cursor:pointer;
+    position: fixed;
+    top: -10px;
+    right: 20px;
+    font-size:18px;
+    font-weight:bold;
+    color: #ffffff;
+    padding:6px 14px;
+    z-index: 3;
+}
+
+.chargement
+{
+    display: flex;
+    position: relative;
+    margin: auto;
+    font-size: 13px;
+    background-color: #a73984;
+    color: #ffffff;
+    justify-content: center;
+    border: none;
+    border-radius: 20px;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.saveBtnDiv,
+.addBtnDiv
+{
+    display: flex;
+    justify-content: center;
+}
+
+.pillSave
+{
+    background-color: #a73984;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    border-radius: 22px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+#addBtn
+{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#saveBtn
+{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+

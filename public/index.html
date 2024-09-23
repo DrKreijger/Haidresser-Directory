@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coiffeurs & Co</title>
+    <script src="index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="index.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
+
+</head>
+<body>
+<div class="banniere">
+    <h4>Coiff'EUR</h4>
+    <button type="button" class="btn btn-dark" id="addCoiffeurBtn"><span class="bi bi-person-plus-fill"></span></button>
+    <button type="button" class="btn btn-dark" id="loginBtn"><span class="bi bi-box-arrow-in-right"></span></button>
+    <button type="button" class="btn btn-dark" id="logoutBtn"><span class="bi bi-box-arrow-right"></span></button>
+</div>
+<div class="mainDiv">
+    <div class="contentContainer" id="content-Container">
+
+        <div class="barreDeRecherche">
+            <input type="text" id="searchInput" placeholder="Rechercher...">
+            <p id="resultCount"></p>
+        </div>
+        <div id="coiffeursContainer"></div>
+        <template id="listeCoiffeursTemplate">
+            <div class="coiffeursListe">
+                <p class="nomCoiffeur"></p>
+                <p class="rueEtNumero"></p>
+                <p class="ville-code_postale"></p>
+                <p class="indexCoiffeur"></p>
+            </div>
+        </template>
+        <div class="chargement">Charger plus...</div>
+
+    </div>
+    <div class="coiffeurDetailsContainer" id="coiffeur-Details-Container">
+        <button type="button" id="closeDetailsBtn">X</button>
+        <div class="coiffeurDetails" id="coiffeur-Details">
+            <p><span class="details" id="detailsNom">Nom </span><span class="valeurs" id="valeursNom"></span></p>
+            <p><span class="details" id="detailsNumero">Numéro </span><span class="valeurs" id="valeursNumero"></span></p>
+            <p><span class="details" id="detailsVoie">Voie </span><span class="valeurs" id="valeursVoie"></span></p>
+            <p><span class="details" id="detailsCodePostal">Code Postal </span><span class="valeurs" id="valeursCodePostal"></span></p>
+            <p><span class="details" id="detailsVille">Ville </span><span class="valeurs" id="valeursVille"></span></p>
+        </div>
+
+        <div class="editDetailsContainer" id="edit-Details-Container">
+            <div class="editDetails">
+                <label for="nomCoiffeurEdit">Nom</label>
+                <input type="nomCoiffeurEdit" id="nomCoiffeurEdit" required>
+            </div>
+            <div class="editDetails">
+                <label for="numeroCoiffeurEdit">Numéro</label>
+                <input type="numeroCoiffeurEdit" id="numeroCoiffeurEdit" required>
+            </div>
+            <div class="editDetails">
+                <label for="voieCoiffeurEdit">Voie</label>
+                <input type="voieCoiffeurEdit" id="voieCoiffeurEdit" required>
+            </div>
+            <div class="editDetails">
+                <label for="codePostalCoiffeurEdit">Code Postal</label>
+                <input type="codePostalCoiffeurEdit" id="codePostalCoiffeurEdit" required>
+            </div>
+            <div class="editDetails">
+                <label for="villeCoiffeurEdit">Ville</label>
+                <input type="villeCoiffeurEdit" id="villeCoiffeurEdit" required>
+            </div>
+            <div class="editDetails">
+                <label for="latCoiffeurEdit">Latitude</label>
+                <input type="latCoiffeurEdit" id="latCoiffeurEdit" required>
+            </div>
+            <div class="editDetails">
+                <label for="longCoiffeurEdit">Longitude</label>
+                <input type="longCoiffeurEdit" id="longCoiffeurEdit" required>
+            </div>
+            <div class="saveBtnDiv">
+                <button type="button" class="pillSave" id="saveBtn">Enregistrer</button>
+            </div>
+        </div>
+        <div id='map'></div>
+        <div class="addCoiffeurContainer" id="add-Coiffeur-Container">
+            <div class="addDetails">
+                <label for="nomCoiffeurEdit">Nom</label>
+                <input type="nomCoiffeurEdit" id="nomCoiffeurAdd" required>
+            </div>
+            <div class="addDetails">
+                <label for="numeroCoiffeurEdit">Numéro</label>
+                <input type="numeroCoiffeurEdit" id="numeroCoiffeurAdd" required>
+            </div>
+            <div class="addDetails">
+                <label for="voieCoiffeurEdit">Voie</label>
+                <input type="voieCoiffeurEdit" id="voieCoiffeurAdd" required>
+            </div>
+            <div class="addDetails">
+                <label for="codePostalCoiffeurEdit">Code Postal</label>
+                <input type="codePostalCoiffeurEdit" id="codePostalCoiffeurAdd" required>
+            </div>
+            <div class="addDetails">
+                <label for="villeCoiffeurEdit">Ville</label>
+                <input type="villeCoiffeurEdit" id="villeCoiffeurAdd" required>
+            </div>
+            <div class="addDetails">
+                <label for="latCoiffeurEdit">Latitude</label>
+                <input type="latCoiffeurEdit" id="latCoiffeurAdd" required>
+            </div>
+            <div class="addDetails">
+                <label for="longCoiffeurEdit">Longitude</label>
+                <input type="longCoiffeurEdit" id="longCoiffeurAdd" required>
+            </div>
+            <div class="addBtnDiv">
+                <button type="button" class="pillSave" id="addBtn">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

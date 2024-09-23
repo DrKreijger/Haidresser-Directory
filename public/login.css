@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fbfbfb;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #fbfbfb;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 4px;
+    border: 3px solid #f4e3ec;
+    width: 400px;
+    text-align: center;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f3f3f3;
+    border: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-span {
+    flex: 1;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.login-form button {
+    width: 100%;
+    background-color: #a73984;
+    color: #ffffff;
+    padding: 12px; /* Réduction de la taille */
+    border: none;
+    border-radius: 20px; /* Style de pilule */
+    cursor: pointer;
+    margin-right: 10px;
+}
+
